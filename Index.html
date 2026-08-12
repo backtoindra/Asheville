@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferrara Real NY Pizza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Oswald:wght@600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --red: #C8281A;
+    --red-dark: #8B1A10;
+    --cream: #FAF6EF;
+    --cream-dark: #F0E8D8;
+    --olive: #2D3A1E;
+    --olive-mid: #4A5E30;
+    --gold: #C4922A;
+    --charcoal: #1A1614;
+    --warm-gray: #6B6258;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250,246,239,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200,40,26,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--red-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .nav-logo span { display: block; font-size: 0.6rem; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm-gray); margin-top: 2px; }
+
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav-links a { text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--olive); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-links .cta {
+    background: var(--red); color: #fff; padding: 0.55rem 1.4rem; border-radius: 2px;
+    letter-spacing: 0.1em; transition: background 0.2s;
+  }
+  .nav-links .cta:hover { background: var(--red-dark); color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+
+  .hero-left {
+    padding: 7rem 4rem 5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.8rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--red);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 1.8rem 0 2.5rem;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--red);
+    transition: all 0.22s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red-dark); border-color: var(--red-dark); }
+  .btn-outline {
+    background: transparent;
+    color: var(--charcoal);
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--charcoal);
+    transition: all 0.22s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--charcoal); color: var(--cream); }
+
+  .hero-badges {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .badge { text-align: left; }
+  .badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+  .badge-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-top: 0.3rem;
+  }
+
+  /* Hero right — illustrated panel */
+  .hero-right {
+    background: var(--olive);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pizza-illustration {
+    width: min(480px, 85%);
+    height: min(480px, 85%);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-right-tagline {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+    z-index: 3;
+  }
+
+  /* Decorative circles */
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.07);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  /* ── MARQUEE STRIP ── */
+  .strip {
+    background: var(--red);
+    padding: 0.85rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .strip-inner {
+    display: inline-flex;
+    gap: 0;
+    animation: marquee 22s linear infinite;
+  }
+  .strip-item {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    padding: 0 2.5rem;
+  }
+  .strip-dot {
+    color: rgba(255,255,255,0.4);
+    padding: 0 0.3rem;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── ABOUT ── */
+  .section { padding: 7rem 6rem; }
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+  .about-text p strong { color: var(--charcoal); font-weight: 500; }
+
+  .about-visual {
+    background: var(--cream-dark);
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 3rem 2.5rem;
+    position: relative;
+  }
+  .about-visual::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    line-height: 0.7;
+    color: var(--red);
+    opacity: 0.18;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+  .about-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--charcoal);
+    position: relative;
+    z-index: 1;
+  }
+  .about-quote-attr {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+  }
+
+  /* ── MENU ── */
+  .menu-section {
+    background: var(--olive);
+    padding: 7rem 6rem;
+    color: var(--cream);
+  }
+  .menu-section .section-label { color: var(--gold); }
+  .menu-section .section-title { color: #fff; }
+
+  .menu-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .menu-tab {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.8rem 0.75rem 0;
+    cursor: pointer;
+    margin-right: 1.5rem;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+  }
+  .menu-tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .menu-tab:hover { color: rgba(255,255,255,0.75); }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+  }
+
+  .menu-item {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem 1.8rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .menu-item:hover { background: rgba(255,255,255,0.08); }
+
+  .menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+  }
+  .menu-item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    max-width: 180px;
+  }
+  .menu-item-price {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 0.5rem;
+  }
+  .menu-item-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .menu-item-tag {
+    display: inline-block;
+    margin-top: 0.8rem;
+    background: rgba(196,146,42,0.18);
+    color: var(--gold);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+  }
+
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; }
+
+  /* ── FEATURES ── */
+  .features-section {
+    padding: 7rem 6rem;
+    background: var(--cream);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    margin-top: 4rem;
+  }
+  .feature-card {
+    border-top: 3px solid var(--red);
+    padding-top: 1.8rem;
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 1.2rem;
+  }
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.6rem;
+  }
+  .feature-desc {
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-section {
+    padding: 0 0 7rem;
+    background: var(--cream);
+  }
+  .gallery-header {
+    padding: 0 6rem 3.5rem;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 3px;
+  }
+  .gallery-cell {
+    overflow: hidden;
+    position: relative;
+    background: var(--cream-dark);
+  }
+  .gallery-cell:first-child { grid-row: span 2; }
+  .gallery-cell-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    transition: transform 0.5s ease;
+  }
+  .gallery-cell:hover .gallery-cell-inner { transform: scale(1.04); }
+  .gallery-label {
+    position: absolute;
+    bottom: 1rem; left: 1rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.5);
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* ── ORDER / CTA ── */
+  .cta-section {
+    background: var(--charcoal);
+    padding: 7rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .cta-section .section-label { color: var(--gold); }
+  .cta-section .section-title { color: #fff; }
+  .cta-section p { color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+
+  .order-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .info-block {
+    border-left: 3px solid var(--red);
+    padding-left: 1.2rem;
+  }
+  .info-block-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.5rem;
+  }
+  .info-block-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #100E0C;
+    padding: 3rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+  }
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .footer-links a {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-title   { animation: fadeUp 0.7s ease 0.25s both; }
+  .hero-subtitle{ animation: fadeUp 0.6s ease 0.4s both; }
+  .hero-ctas    { animation: fadeUp 0.6s ease 0.52s both; }
+  .hero-badges  { animation: fadeUp 0.6s ease 0.65s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links a:not(.cta) { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 3rem; }
+    .hero-right { min-height: 340px; }
+    .section, .features-section, .gallery-section, .cta-section, .menu-section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .features-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-cell:first-child { grid-row: auto; }
+    .cta-section { grid-template-columns: 1fr; gap: 3rem; }
+    .order-info { grid-template-columns: 1fr; gap: 1.5rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Ferrara
+    <span>Real New Yorkers, Real Italians, Real Pizza</span>
+  </div>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">Our Story</a>
+    <a href="#order">Hours</a>
+    <a href="https://ferrarapizzaasheville.hrpos.heartland.us/menu" class="cta">Order Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Authentic Since Day One</p>
+    <h1 class="hero-title">
+      Real New<br>York <em>Pizza</em>
+    </h1>
+    <p class="hero-subtitle">
+      Handcrafted dough, San Marzano tomatoes, and imported mozzarella — the kind of slice that makes you close your eyes.
+    </p>
+    <div class="hero-ctas">
+      <a href="#menu" class="btn-primary">View Our Menu</a>
+      <a href="https://ferrarapizzaasheville.hrpos.heartland.us/menu" class="btn-outline">Order Online</a>
+	<a href="https://ferrarapizzaasheville.hrpos.heartland.us/menu" class="btn-outline">Slice</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">
+        <div class="badge-num">48h</div>
+        <div class="badge-label">Cold-fermented dough</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">100%</div>
+        <div class="badge-label">Fresh ingredients</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">NY</div>
+        <div class="badge-label">Style every time</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- SVG Pizza Illustration -->
+    <svg class="pizza-ill ustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer crust -->
+      <circle cx="200" cy="200" r="185" fill="#C4922A" opacity="0.18"/>
+      <circle cx="200" cy="200" r="185" fill="none" stroke="#C4922A" stroke-width="1.5" opacity="0.4"/>
+
+      <!-- Pizza base -->
+      <circle cx="200" cy="200" r="170" fill="#D4862A"/>
+      <!-- Sauce -->
+      <circle cx="200" cy="200" r="155" fill="#B83820"/>
+      <!-- Cheese -->
+      <ellipse cx="200" cy="200" rx="152" ry="150" fill="#F4C56A"/>
+
+      <!-- Cheese blobs -->
+      <ellipse cx="165" cy="175" rx="42" ry="38" fill="#EDB84A" opacity="0.7"/>
+      <ellipse cx="235" cy="160" rx="35" ry="32" fill="#EDB84A" opacity="0.65"/>
+      <ellipse cx="210" cy="230" rx="50" ry="38" fill="#EDB84A" opacity="0.6"/>
+      <ellipse cx="155" cy="225" rx="38" ry="30" fill="#EDB84A" opacity="0.55"/>
+      <ellipse cx="248" cy="210" rx="32" ry="28" fill="#EDB84A" opacity="0.65"/>
+
+      <!-- Pepperoni -->
+      <circle cx="175" cy="170" r="22" fill="#8B2A1A"/>
+      <circle cx="175" cy="170" r="18" fill="#A33020"/>
+      <circle cx="230" cy="155" r="20" fill="#8B2A1A"/>
+      <circle cx="230" cy="155" r="16" fill="#A33020"/>
+      <circle cx="210" cy="225" r="24" fill="#8B2A1A"/>
+      <circle cx="210" cy="225" r="19" fill="#A33020"/>
+      <circle cx="158" cy="220" r="19" fill="#8B2A1A"/>
+      <circle cx="158" cy="220" r="15" fill="#A33020"/>
+      <circle cx="248" cy="205" r="21" fill="#8B2A1A"/>
+      <circle cx="248" cy="205" r="17" fill="#A33020"/>
+      <circle cx="190" cy="195" r="17" fill="#8B2A1A"/>
+      <circle cx="190" cy="195" r="13" fill="#A33020"/>
+
+      <!-- Pepperoni texture dots -->
+      <circle cx="173" cy="165" r="3" fill="#6B1F14" opacity="0.6"/>
+      <circle cx="179" cy="173" r="2.5" fill="#6B1F14" opacity="0.5"/>
+      <circle cx="228" cy="151" r="3" fill="#6B1F14" opacity="0.6"/>
+      <circle cx="212" cy="221" r="3.5" fill="#6B1F14" opacity="0.5"/>
+      <circle cx="247" cy="201" r="3" fill="#6B1F14" opacity="0.6"/>
+
+      <!-- Basil leaves -->
+      <ellipse cx="200" cy="145" rx="12" ry="7" fill="#2D6A1E" transform="rotate(-25 200 145)"/>
+      <ellipse cx="270" cy="175" rx="10" ry="6" fill="#2D6A1E" transform="rotate(40 270 175)"/>
+      <ellipse cx="145" cy="255" rx="11" ry="6" fill="#2D6A1E" transform="rotate(-15 145 255)"/>
+
+      <!-- Crust ring -->
+      <circle cx="200" cy="200" r="170" fill="none" stroke="#C4922A" stroke-width="24" opacity="0.35"/>
+      <circle cx="200" cy="200" r="170" fill="none" stroke="#D4862A" stroke-width="20" opacity="0.15"/>
+
+      <!-- Steam lines -->
+      <path d="M185 20 Q188 12 185 4" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M200 15 Q203 7 200 -1" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M215 20 Q218 12 215 4" stroke="rgba(255,255,255,0.25)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <p class="hero-right-tagline">Baked fresh, every single day</p>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">New York Style Slices</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Whole Pies</span><span class="strip-dot">✦</span>
+    <span class="strip-item">48-Hour Dough</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Fresh Daily</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Calzones</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Stromboli</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Gluten-Free Available</span><span class="strip-dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span class="strip-item">New York Style Slices</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Whole Pies</span><span class="strip-dot">✦</span>
+    <span class="strip-item">48-Hour Dough</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Fresh Daily</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Calzones</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Stromboli</span><span class="strip-dot">✦</span>
+    <span class="strip-item">Gluten-Free Available</span><span class="strip-dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">A Slice of New York, Right Here</h2>
+      
+<p><strong>Authentic New York Pizza, Now in Asheville </strong>
+
+Our Chef, Ferrara, was <strong> born in Italy and raised in New York</strong>, where he learned the art of making <strong> authentic New York-style pizza and Italian pasta.</strong>
+
+With many years of experience perfecting his craft, Chef Ferrara brings the flavors, techniques, and traditions of a true New York pizzeria to <strong> Asheville.</strong>
+
+Now, you don’t have to travel to New York to enjoy the real thing. Come experience <strong> authentic New York-style pizza and pasta, made right here in Asheville! </strong>
+
+<strong>Born in Italy. Raised in New York. Now serving Asheville.</strong></p>
+<p>Ferrara Real NY Pizza was born from a simple obsession: recreating the <strong>iconic New York slice</strong> exactly as it should be — wide, foldable, with a crisp yet chewy crust that crackles on the bottom and melts into flavor at the tip.</p>
+      <p>We cold-ferment our dough for 48 hours, import San Marzano tomatoes from Campania, and hand-stretch every pie to order. No shortcuts. <strong>No compromises.</strong></p>
+      <p>Whether you're grabbing a quick slice at the counter or settling in with a whole pie, every bite carries that unmistakable New York soul.</p>
+      <a href="#menu" class="btn-primary" style="margin-top: 1rem;">See the Menu</a>
+    </div>
+    <div class="about-visual">
+      <p class="about-quote">"The kind of pizza that ruins you for everywhere else."</p>
+      <p class="about-quote-attr">— A happy regular</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <p class="section-label">What We Make</p>
+  <h2 class="section-title">The Menu</h2>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="switchTab(this, 'pizzas')">Pizzas</button>
+    <button class="menu-tab" onclick="switchTab(this, 'slices')">By the Slice</button>
+    <button class="menu-tab" onclick="switchTab(this, 'extras')">Extras & Drinks</button>
+  </div>
+
+  <div id="pizzas" class="menu-panel active">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">The Ferrara Margherita</div>
+          <div class="menu-item-price">$$</div>
+        </div>
+        <p class="menu-item-desc">San Marzano tomato, fresh fior di latte, hand-torn basil, extra-virgin olive oil.</p>
+        <span class="menu-item-tag">Classic</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">NY Pepperoni</div>
+          <div class="menu-item-price">$$</div>
+        </div>
+        <p class="menu-item-desc">Cup-and-char pepperoni, whole-milk mozzarella, crushed tomatoes, oregano.</p>
+        <span class="menu-item-tag">Fan Favorite</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">White Garlic Pie</div>
+          <div class="menu-item-price">$$</div>
+        </div>
+        <p class="menu-item-desc">Roasted garlic, ricotta, mozzarella, fresh rosemary, drizzle of honey.</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Vodka Pie</div>
+          <div class="menu-item-price">$$</div>
+        </div>
+        <p class="menu-item-desc">Creamy vodka tomato sauce, shaved parmesan, fresh basil, mozzarella.</p>
+        <span class="menu-item-tag">House Special</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Veggie Garden</div>
+          <div class="menu-item-price">$$ </div>
+        </div>
+        <p class="menu-item-desc">Roasted peppers, artichokes, kalamata olives, mushrooms, fresh spinach.</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Build Your Own</div>
+          <div class="menu-item-price">$11.99+</div>
+        </div>
+        <p class="menu-item-desc">Start with our classic crust and sauce, then add your choice of toppings.</p>
+        <span class="menu-item-tag">Custom</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="slices" class="menu-panel">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Plain Slice</div>
+          <div class="menu-item-price">$3.25</div>
+        </div>
+        <p class="menu-item-desc">Classic tomato and mozzarella on our signature 48-hour dough.</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">2 Pepperoni Slices </div>
+          <div class="menu-item-price">$7.99</div>
+        </div>
+        <p class="menu-item-desc">Loaded with cup-and-char pepperoni and extra mozzarella.</p>
+        <span class="menu-item-tag">Most Ordered</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Sicilian Square</div>
+          <div class="menu-item-price">$4.25</div>
+        </div>
+        <p class="menu-item-desc">Thick and fluffy, golden bottom, double sauce, abundant cheese.</p>
+        <span class="menu-item-tag">Pan Style</span>
+      </div>
+ <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Slice of Grandma</div>
+          <div class="menu-item-price">$4.99</div>
+        </div>
+        <p class="menu-item-desc">Think and Crispy, golden bottom, double sauce, abundant cheese.</p>
+        <span class="menu-item-tag">Pan Style</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="extras" class="menu-panel">
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Calzone</div>
+          <div class="menu-item-price">$$</div>
+        </div>
+        <p class="menu-item-desc">Ricotta, mozzarella, and your choice of fillings. Served with marinara.</p>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">Garlic Knots</div>
+          <div class="menu-item-price">$6</div>
+        </div>
+        <p class="menu-item-desc">Six freshly baked knots tossed in garlic butter and parsley.</p>
+        <span class="menu-item-tag">Crowd Pleaser</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-header">
+          <div class="menu-item-name">House Salad</div>
+          <div class="menu-item-price">$9</div>
+        </div>
+        <p class="menu-item-desc">Mixed greens, cherry tomatoes, red onion, house Italian dressing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <p class="section-label">Why Ferrara</p>
+  <h2 class="section-title">Made the Right Way</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#C8281A" stroke-width="1.5" opacity="0.3"/>
+        <path d="M22 10 C22 10 14 16 14 24 C14 29 17.6 33 22 33 C26.4 33 30 29 30 24 C30 16 22 10 22 10Z" fill="#C8281A" opacity="0.15" stroke="#C8281A" stroke-width="1.5"/>
+        <path d="M22 17 C22 17 18 20 18 24 C18 26.2 19.8 28 22 28 C24.2 28 26 26.2 26 24 C26 20 22 17 22 17Z" fill="#C8281A" opacity="0.5"/>
+      </svg>
+      <h3 class="feature-title">Stone Oven </h3>
+      <p class="feature-desc">Our oven hits 600°F for that perfect and authentic NY bake on every pie.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#C8281A" stroke-width="1.5" opacity="0.3"/>
+        <path d="M12 22 Q17 16 22 22 Q27 28 32 22" stroke="#C8281A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <text x="22" y="35" font-size="7" text-anchor="middle" fill="#C8281A" opacity="0.7" font-family="serif">48h</text>
+      </svg>
+      <h3 class="feature-title">48-Hour Dough</h3>
+      <p class="feature-desc">Cold-fermented dough develops complex flavor you simply can't rush.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#C8281A" stroke-width="1.5" opacity="0.3"/>
+        <circle cx="22" cy="22" r="9" fill="#C8281A" opacity="0.15" stroke="#C8281A" stroke-width="1.5"/>
+        <path d="M22 13 L22 31 M13 22 L31 22" stroke="#C8281A" stroke-width="1.2" opacity="0.5"/>
+      </svg>
+      <h3 class="feature-title">Imported Ingredients</h3>
+      <p class="feature-desc">San Marzano tomatoes and Italian mozzarella — imported for authenticity.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="#C8281A" stroke-width="1.5" opacity="0.3"/>
+        <path d="M15 22 L19.5 27 L29 17" stroke="#C8281A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 class="feature-title">Always Fresh</h3>
+      <p class="feature-desc">Every pizza made to order. Nothing sits under a heat lamp here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY (illustrated) -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <p class="section-label">From Our Kitchen</p>
+    <h2 class="section-title">Every Slice, a Story</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-cell" style="background: #2D1A0E;">
+      <div class="gallery-cell-inner">
+        <svg viewBox="0 0 300 500" width="220" xmlns="http://www.w3.org/2000/svg" style="opacity:0.9">
+          <circle cx="150" cy="220" r="140" fill="#D4862A"/>
+          <circle cx="150" cy="220" r="128" fill="#B83820"/>
+          <circle cx="150" cy="220" r="124" fill="#F4C56A"/>
+          <ellipse cx="130" cy="200" rx="40" ry="35" fill="#EDB84A" opacity="0.7"/>
+          <ellipse cx="175" cy="185" rx="32" ry="28" fill="#EDB84A" opacity="0.65"/>
+          <circle cx="128" cy="195" r="19" fill="#A33020"/>
+          <circle cx="173" cy="180" r="17" fill="#A33020"/>
+          <circle cx="155" cy="235" r="21" fill="#A33020"/>
+        </svg>
+      </div>
+      <span class="gallery-label">NY Pepperoni Pie</span>
+    </div>
+    <div class="gallery-cell" style="background: #1A2D0E;">
+      <div class="gallery-cell-inner" style="flex-direction: column; gap: 0.5rem;">
+        <svg viewBox="0 0 140 140" width="120" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="70" cy="80" rx="65" ry="55" fill="#D4862A"/>
+          <ellipse cx="70" cy="80" rx="58" ry="48" fill="#F4C56A"/>
+          <ellipse cx="55" cy="75" rx="20" ry="16" fill="#fff" opacity="0.85"/>
+          <ellipse cx="85" cy="70" rx="18" ry="14" fill="#fff" opacity="0.8"/>
+          <ellipse cx="68" cy="65" rx="14" ry="12" fill="#2D6A1E" opacity="0.85"/>
+          <ellipse cx="82" cy="88" rx="12" ry="9" fill="#2D6A1E" opacity="0.8"/>
+          <path d="M20 80 Q70 10 120 80" stroke="#D4862A" stroke-width="18" fill="none"/>
+        </svg>
+        <p style="font-family:'Playfair Display',serif; font-style:italic; color:rgba(255,255,255,0.6); font-size:0.85rem; text-align:center;">White Garlic</p>
+      </div>
+    </div>
+    <div class="gallery-cell" style="background: #2B1515;">
+      <div class="gallery-cell-inner" style="flex-direction:column; align-items:center; justify-content:center; gap:0.5rem; padding: 1rem;">
+        <p style="font-family:'Oswald',sans-serif; font-size:0.65rem; letter-spacing:0.25em; color:rgba(255,255,255,0.4); text-transform:uppercase;">Ferrara Signature</p>
+        <p style="font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; color:#C4922A; line-height:1; text-align:center;">Slice<br>of Life</p>
+        <p style="font-family:'DM Sans',sans-serif; font-size:0.8rem; color:rgba(255,255,255,0.3); text-align:center; max-width:140px; line-height:1.5;">Fold it in half. That's how you know it's real.</p>
+      </div>
+    </div>
+    <div class="gallery-cell" style="background: #0D1F2D;">
+      <div class="gallery-cell-inner" style="flex-direction:column; gap:0.5rem;">
+        <svg viewBox="0 0 160 120" width="130" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="20" width="140" height="80" rx="4" fill="#D4862A"/>
+          <rect x="14" y="24" width="132" height="72" rx="3" fill="#B83820"/>
+          <rect x="18" y="28" width="124" height="64" rx="2" fill="#F4C56A"/>
+          <rect x="22" y="32" width="116" height="56" rx="2" fill="#EDB84A" opacity="0.6"/>
+          <circle cx="58" cy="60" r="14" fill="#A33020"/>
+          <circle cx="95" cy="55" r="12" fill="#A33020"/>
+          <circle cx="75" cy="70" r="11" fill="#A33020"/>
+          <circle cx="115" cy="68" r="10" fill="#A33020"/>
+          <circle cx="42" cy="73" r="9" fill="#A33020"/>
+        </svg>
+        <p style="font-family:'Playfair Display',serif; font-style:italic; color:rgba(255,255,255,0.55); font-size:0.8rem;">Sicilian Square</p>
+      </div>
+    </div>
+    <div class="gallery-cell" style="background: #1A1207;">
+      <div class="gallery-cell-inner" style="flex-direction:column; gap:0.4rem; padding:1rem; text-align:center;">
+        <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:rgba(255,255,255,0.5); font-style:italic;">Fresh</p>
+        <p style="font-family:'Oswald',sans-serif; font-size:3.5rem; color:#C4922A; line-height:0.9; font-weight:600;">Garlic<br>Knots</p>
+        <p style="font-size:0.75rem; color:rgba(255,255,255,0.3); letter-spacing:0.12em; text-transform:uppercase;">Baked to Order · $6</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER / CTA -->
+<section class="cta-section" id="order">
+  <div>
+    <p class="section-label">Come Find Us</p>
+    <h2 class="section-title">Ready When You Are</h2>
+    <p>Walk in for a slice, call ahead for a whole pie, or gather the crew for dine-in. We're open late because great pizza shouldn't have a curfew.</p>
+    <a href="https://ferrarapizzaasheville.hrpos.heartland.us/menu" class="btn-primary">Ready to Order</a>
+  </div>
+  <div class="order-info">
+    <div class="info-block">
+      <p class="info-block-label">Monday – Thursday</p>
+      <p class="info-block-val">11.00 am – 8.00 pm</p>
+    </div>
+    <div class="info-block">
+      <p class="info-block-label">Friday – Saturday</p>
+      <p class="info-block-val">11.00 am – 9.00 pm</p>
+    </div>
+    <div class="info-block">
+      <p class="info-block-label">Sunday</p>
+      <p class="info-block-val">11.00 am – 8 pm</p>
+    </div>
+    <div class="info-block">
+      <p class="info-block-label">Dine In / Takeout</p>
+      <p class="info-block-val">Both Welcome</p>
+    </div>
+    <div class="info-block" style="grid-column: span 2;">
+      <p class="info-block-label">Location</p>
+<p class="info-block-val">5 Regent Park Blvd, # 107</p>
+<p class="info-block-val">Asheville NC 28806</p>
+<p class="info-block-val">ph# 828-225-2885</p>
+      <p class="info-block-val">ferraraasheville.com</p>
+    </div>
+  </div>
+</section>
+<!-- 
+<form action="https://formsubmit.co/famnypizza@gmail.com" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  
+  <!-- Optional: customize the email subject -->
+  <input type="hidden" name="_subject" value="New message from website contact form!">
+  
+  <!-- Prevents spam bots -->
+  <input type="text" name="_honey" style="display:none">
+  
+  <!-- Disables their captcha page if you want auto-redirect -->
+  <input type="hidden" name="_captcha" value="false">
+  
+  <!-- Redirect after submit (optional) -->
+  <input type="hidden" name="_next" value="https://ferraraasheville.com/thank-you.html">
+  
+ <!--  <button type="submit">Send Message</button> 
+</form> 
+-->
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ferrara</div>
+  <div class="footer-links">
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#order">Hours</a>
+  </div>
+  <p class="footer-copy">© 2026 Ferrara NY Pizza & Pasta. All rights reserved.</p>
+</footer>
+
+<script>
+function switchTab(btn, panelId) {
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+</script>
+</body>
+</html>
