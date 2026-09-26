@@ -588,6 +588,95 @@
     .order-info { grid-template-columns: 1fr; gap: 1.5rem; }
     footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2.5rem 1.5rem; }
   }
+
+  /* ── MOBILE / TABLET ENHANCEMENTS ── */
+  @media (max-width: 900px) {
+    nav { gap: 1rem; }
+    .nav-logo { min-width: 0; flex: 1; }
+    .nav-logo .hero-title { font-size: 1.8rem; line-height: 1; margin: 0; }
+    .nav-logo span { font-size: 0.5rem; letter-spacing: 0.12em; white-space: normal; }
+    .nav-links { gap: 0.45rem; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links .cta { display: inline-block; padding: 0.5rem 0.65rem; font-size: 0.64rem; letter-spacing: 0.05em; }
+
+    .hero { padding-top: 5.5rem; }
+    .hero-left { padding-top: 4rem; }
+    .hero-title { font-size: clamp(2.7rem, 12vw, 4.5rem); }
+    .hero-subtitle { max-width: 100%; }
+    .hero-badges { gap: 1rem; justify-content: space-between; }
+    .badge { flex: 1; }
+    .hero-right { min-height: 360px; }
+    .pizza-illustration { width: min(360px, 82vw); height: auto; }
+    .hero-right-tagline { bottom: 1.5rem; font-size: 0.95rem; }
+
+    .menu-tabs { overflow-x: auto; overflow-y: hidden; white-space: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .menu-tabs::-webkit-scrollbar { display: none; }
+    .menu-tab { flex: 0 0 auto; margin-right: 1rem; padding-right: 0.8rem; }
+    .menu-item { padding: 1.5rem 1.25rem; }
+    .menu-item-name { max-width: calc(100% - 80px); }
+
+    .gallery-section { padding-left: 0; padding-right: 0; }
+    .gallery-header { padding: 0 1.5rem 2.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 230px; }
+    .gallery-cell { min-height: 230px; }
+
+    .info-block[style*="grid-column"] { grid-column: auto !important; }
+    footer { align-items: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0.8rem 1rem; align-items: center; }
+    .nav-logo .hero-title { font-size: 1.55rem; }
+    .nav-logo span { font-size: 0.43rem; line-height: 1.3; max-width: 145px; }
+    .nav-links { max-width: 180px; }
+    .nav-links .cta { padding: 0.42rem 0.5rem; font-size: 0.56rem; }
+
+    .hero { padding-top: 5rem; }
+    .hero-left { padding: 3.5rem 1.15rem 2.5rem; }
+    .hero-eyebrow { font-size: 0.62rem; letter-spacing: 0.24em; }
+    .hero-title { font-size: clamp(2.55rem, 14vw, 3.7rem); }
+    .hero-subtitle { font-size: 0.98rem; margin: 1.4rem 0 2rem; }
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas a { width: 100%; text-align: center; }
+    .hero-badges { margin-top: 2.5rem; padding-top: 1.8rem; gap: 0.6rem; }
+    .badge-num { font-size: 1.55rem; }
+    .badge-label { font-size: 0.6rem; letter-spacing: 0.06em; }
+    .hero-right { min-height: 300px; }
+    .pizza-illustration { width: min(285px, 80vw); }
+
+    .section, .features-section, .cta-section, .menu-section { padding: 3.5rem 1.15rem; }
+    .section-title { font-size: 2rem; }
+    .about-visual { padding: 2.4rem 1.5rem; }
+    .about-quote { font-size: 1.15rem; }
+
+    .features-grid { grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
+    .menu-tab { font-size: 0.72rem; }
+    .menu-item-header { gap: 0.75rem; }
+    .menu-item-name { font-size: 1.05rem; }
+    .menu-item-price { font-size: 1rem; }
+
+    .gallery-header { padding: 0 1.15rem 2rem; }
+    .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 260px; }
+    .gallery-cell { min-height: 260px; }
+
+    .cta-section { gap: 2.5rem; }
+    .cta-section .btn-primary { width: 100%; text-align: center; }
+    .order-info { gap: 1.25rem; }
+    .info-block-val { overflow-wrap: anywhere; }
+    footer { padding: 2.2rem 1.15rem; }
+  }
+
+  @media (max-width: 380px) {
+    nav { position: absolute; }
+    .nav-logo span { display: none; }
+    .nav-links { max-width: 165px; }
+    .nav-links .cta { font-size: 0.52rem; padding: 0.4rem 0.42rem; }
+    .hero { padding-top: 4.3rem; }
+    .hero-left { padding-left: 1rem; padding-right: 1rem; }
+    .hero-badges { flex-wrap: wrap; }
+    .badge { min-width: 30%; }
+  }
+
 </style>
 </head>
 <body>
